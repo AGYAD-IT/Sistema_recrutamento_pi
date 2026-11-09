@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Candidatos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Painel de Controle</h1>
+        <p>Gerenciamento de candidatos cadastrados</p>
+    </header>
+
+    <main>
+        <section class="formulario">
+
+            <h2>Candidatos cadastrados</h2>
+
+            <p>Total de candidatos: {{ candidatos|length }}</p>
+
+            <br>
+
+            {% if candidatos %}
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                        <th>Nacionalidade</th>
+                        <th>Idade</th>
+                        <th>CPF</th>
+                        <th>Passaporte</th>
+<th>Identificação</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for candidato in candidatos %}
+                    <tr>
+                        <td>{{ candidato.nome }}</td>
+                        <td>{{ candidato.telefone }}</td>
+                        <td>{{ candidato.email }}</td>
+                        <td>{{ candidato.nacionalidade }}</td>
+                        <td>{{ candidato.idade }}</td>
+                        <td>{{ candidato.cpf }}</td>
+                        <td>
+    {% if candidato.passaporte %}
+        <a href="{{ url_for('visualizar_documento', nome_arquivo=candidato.passaporte) }}" target="_blank">Visualizar</a>
+    {% else %}
+        Não anexado
+    {% endif %}
+</td>
+
+<td>
+    {% if candidato.identificacao %}
+        <a href="{{ url_for('visualizar_documento', nome_arquivo=candidato.identificacao) }}" target="_blank">Visualizar</a>
+    {% else %}
+        Não anexado
+    {% endif %}
+</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% else %}
+
+            <p>Nenhum candidato cadastrado.</p>
+
+            {% endif %}
+
+            <br>
+
+            <a href="/">Voltar ao cadastro</a>
+
+        </section>
+    </main>
+
+</body>
+</html>

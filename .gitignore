@@ -1,0 +1,7 @@
+
+.venv/
+__pycache__/
+*.pyc
+recrutamento.db
+uploads/*
+.env

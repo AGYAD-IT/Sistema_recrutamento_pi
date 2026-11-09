@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Recrutamento</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Sistema de Recrutamento</h1>
+        <p>Cadastro e gerenciamento de candidatos</p>
+    </header>
+
+    <main>
+        <section class="formulario">
+
+            <h2>Cadastro de candidato</h2>
+
+            <form action="/cadastrar" method="POST" enctype="multipart/form-data">
+
+                
+<label>Nome completo</label>
+<input type="text" name="nome" placeholder="Digite o nome completo" required>
+
+<label>Telefone</label>
+<input type="tel" name="telefone" placeholder="Digite o telefone">
+
+<label>E-mail</label>
+<input type="email" name="email" placeholder="Digite o e-mail">
+
+<label>Nacionalidade</label>
+<input type="text" name="nacionalidade" placeholder="Digite a nacionalidade">
+
+<label>Idade</label>
+<input type="number" name="idade" placeholder="Digite a idade">
+
+<label>CPF</label>
+<input type="text" name="cpf" placeholder="Digite o CPF">
+
+<label>Documentos do candidato</label>
+<label>Passaporte (PDF ou imagem)</label>
+<input type="file" name="passaporte" accept=".pdf,.png,.jpg,.jpeg">
+
+<label>Documento de identificação (PDF ou imagem)</label>
+<input type="file" name="identificacao" accept=".pdf,.png,.jpg,.jpeg">
+
+<button type="submit">Cadastrar candidato</button>
+
+
+            </form>
+<br>
+
+<a href="/candidatos">Acessar painel de controle</a>
+        </section>
+    </main>
+
+</body>
+</html>
